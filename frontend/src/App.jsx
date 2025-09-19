@@ -8,7 +8,7 @@ import { ChannelMessageData } from './components/ChannelMessageData';
 import { ChatListData } from './components/ChatListData';
 import { ChatMessagesData } from './components/ChatMessagesData';
 import { EmailData } from './components/EmailData';
-import { FileListData } from './components/FileListData';
+import { FilesData } from './components/FilesData';
 import { TeamChannelsListData } from './components/TeamChannelsListData';
 import { APIData } from './components/APIData';
 
@@ -178,7 +178,7 @@ const ChannelMessageListContent = () => {
     );
 };
 
-const FileListContent = () => {
+const FilesContent = () => {
     const { instance, accounts } = useMsal();
     const [graphData, setGraphData] = useState(null);
 
@@ -198,16 +198,16 @@ const FileListContent = () => {
 
     return (
         <>
-            <h5 className="api">File List</h5>
+            <h5 className="api">Files</h5>
             {graphData ? (
-                <FileListData graphData={graphData} />
+                <FilesData graphData={graphData} />
             ) : (
                 <form action={RequestData}>
                     <label>
                         File Path: <input name="file_path" />
                     </label>
                     <button variant="secondary" type="submit">
-                        Request File List
+                        Get Files
                     </button>
                 </form>
             )}
@@ -327,12 +327,12 @@ const MainContent = () => {
                 <ProfileContent />
                 <ChatListContent />
                 <TeamChannelsListContent />
-                <FileListContent />
                 <APIContent />
                 <hr />
                 <EmailContent />
                 <ChatMessagesContent />
                 <ChannelMessageListContent />
+                <FilesContent />
             </AuthenticatedTemplate>
 
             <UnauthenticatedTemplate>
